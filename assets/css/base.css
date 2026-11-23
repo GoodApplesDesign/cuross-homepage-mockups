@@ -1,0 +1,32 @@
+/* Cuross homepage mockups: shared Ovoss tokens and type. Avenir Next is a system font on Mac and iPhone;
+   Nunito Sans is the Ovoss guidelines' web fallback for other devices. */
+@font-face{font-family:"Ovoss Serif";src:url(../fonts/ovoss-serif-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+:root{
+  --navy:#10233F;--slate:#5F6C79;--tint:#E8F2FD;--wave:#BBD4EE;--foil:#4B8ECB;--mist:#F7F9FB;--studio:#E5E6EA;
+  --line:rgba(16,35,63,.12);--faint:rgba(16,35,63,.5);
+  --sans:"Avenir Next",Avenir,"Nunito Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Ovoss Serif","Noto Serif",Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--navy);font:400 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+h1,h2,h3,h4,p,ul{margin:0}
+ul{padding:0;list-style:none}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;text-transform:none}
+.caps{text-transform:uppercase;font-weight:600;letter-spacing:.1em}
+.pname{text-transform:uppercase;font-weight:600;letter-spacing:.14em}
+.ico{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* direction switcher (viewing tool, PeriscoPe dark styling) */
+.dswitch{position:fixed;right:16px;bottom:16px;z-index:100;display:flex;background:#050607;border:1px solid #2A2F35;font:400 14px/1 "Helvetica Neue",Helvetica,Arial,sans-serif}
+.dswitch a{display:flex;align-items:center;gap:8px;height:46px;padding:0 18px;color:#8C949B;transition:color .2s}
+.dswitch a+a{border-left:1px solid #2A2F35}
+.dswitch a:hover{color:#F3F5F7}
+.dswitch a.on{color:#F3F5F7;box-shadow:inset 0 -2px 0 #00A6DC}
+.dswitch span{font-size:12px;color:#68717B}
+.dswitch a.on span{color:#00A6DC}
+.dswitch img{width:22px;height:22px}
+@media (max-width:560px){.dswitch{right:12px;bottom:12px}.dswitch a{height:42px;padding:0 14px}}

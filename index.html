@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cuross Homepage Mockups</title>
+<style>
+:root{--ink:#000;--body:#1a1a1a;--grey:#c3c8cd;--muted:#7a8288;--rule:#d9dde0;--cyan:#00a0d8;--cyan-ink:#0a7fae;--font:"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--body);font:400 15px/1.5 var(--font)}
+.page{max-width:1180px;margin:0 auto;padding:40px 32px 48px}
+p{margin:0 0 8px} b{font-weight:700;color:var(--ink)} a{color:var(--cyan-ink)}
+.eye{display:block;height:64px;margin-bottom:32px}
+h1{font-weight:400;font-size:38px;line-height:1.1;color:var(--ink);margin:0}
+.sub{font-weight:300;font-size:25px;color:var(--grey);margin:4px 0 0}
+h2{font-weight:400;font-size:26px;color:var(--cyan);margin:40px 0 12px}
+.intro{max-width:760px;margin-top:28px}
+.dirs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.row{display:grid;grid-template-columns:40px minmax(0,1fr);background:#F1F4F7;border-radius:14px;padding:30px 32px 32px 24px}
+.row>div:last-child{display:flex;flex-direction:column}
+.num{font-size:15px;color:var(--muted);padding-top:4px}
+.row h3{margin:0;font-weight:400;font-size:24px;color:var(--ink)}
+.row .copy{margin-top:8px;flex:1}
+.go{display:inline-block;margin-top:6px;font-weight:500;align-self:flex-start}
+.shots{display:grid;grid-template-columns:minmax(0,1fr) 22%;gap:12px;margin-top:20px;align-items:start}
+.shots a{display:block;text-decoration:none}
+.shots img{display:block;width:100%;height:auto;border:1px solid #dfe3e7;border-radius:6px}
+.shots .m img{aspect-ratio:375/812;object-fit:cover;object-position:top}
+.cap{font-size:12px;color:var(--muted);margin-top:5px}
+.foot{display:flex;align-items:center;gap:6px;margin-top:44px}
+.foot .w{height:18px}.foot .e{height:28px;margin-top:-8px}
+@media (max-width:760px){
+  .page{padding:24px 16px 40px}
+  h1{font-size:30px}.sub{font-size:20px}
+  .dirs{grid-template-columns:1fr;gap:12px}
+  .row{grid-template-columns:32px minmax(0,1fr);padding:22px 18px 24px 16px}
+  .shots{grid-template-columns:minmax(0,1fr) 26%;gap:10px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <img class="eye" src="assets/periscope/eye.png" alt="PeriscoPe">
+  <h1>Cuross Health Website</h1>
+  <p class="sub">Homepage mockups, two directions</p>
+
+  <p class="intro">A quick homepage on each of the two shortlisted Shopify themes, branded Cuross in the Ovoss identity and filled with the real products. They're here to choose a direction, not to sign off final design or copy. Both themes include Shopify's B2B features, so practices see wholesale prices when they sign in.</p>
+
+  <h2>The Two Directions</h2>
+  <div class="dirs">
+  <div class="row">
+    <div class="num">01</div>
+    <div>
+      <h3>Direction A: Hyper</h3>
+      <p class="copy">Catalogue-led. A large search bar, category shortcuts and rows of products, so a practice can find and reorder known lines quickly and a patient can browse by need. Suits the full range growing over time.</p>
+      <a class="go" href="hyper.html">View Direction A</a>
+      <div class="shots">
+        <a href="hyper.html"><img src="assets/img/thumb-hyper.jpg" alt="Direction A homepage, desktop"><div class="cap">Desktop</div></a>
+        <a class="m" href="hyper.html"><img src="assets/img/thumb-hyper-m.jpg" alt="Direction A homepage, phone"><div class="cap">Phone</div></a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="num">02</div>
+    <div>
+      <h3>Direction B: Sleek</h3>
+      <p class="copy">Editorial and roomier. Big slides, a featured product block and fewer, larger sections, so it leans towards patients shopping at home, with the practice offer further down the page.</p>
+      <a class="go" href="sleek.html">View Direction B</a>
+      <div class="shots">
+        <a href="sleek.html"><img src="assets/img/thumb-sleek.jpg" alt="Direction B homepage, desktop"><div class="cap">Desktop</div></a>
+        <a class="m" href="sleek.html"><img src="assets/img/thumb-sleek-m.jpg" alt="Direction B homepage, phone"><div class="cap">Phone</div></a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="foot"><img class="w" src="assets/periscope/wordmark_ink.png" alt="PeriscoPe"><img class="e" src="assets/periscope/eye.png" alt=""></div>
+</div>
+</body>
+</html>

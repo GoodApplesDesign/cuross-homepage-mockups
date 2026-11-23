@@ -1,0 +1,13 @@
+# not published: build scripts, internal spec, Mac files, prepped images the pages don't use
+_build/
+SPEC.md
+.DS_Store
+assets/img/idx-inmouth-implant-denture.jpg
+assets/img/idx-inmouth-xfloss-lite.jpg
+assets/img/idx-inmouth-xfloss.jpg
+assets/img/idx-inmouth-xribbon.jpg
+assets/img/idx-xfloss-lite-w.jpg
+assets/img/idx-xfloss-w.jpg
+assets/img/idx-xribbon-w.jpg
+assets/img/ovoss-bottle.jpg
+assets/img/ovoss-toothpaste-wide.jpg
