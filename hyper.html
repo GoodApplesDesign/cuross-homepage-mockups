@@ -19,18 +19,12 @@ section{margin-top:clamp(48px,5vw,80px)}
 .link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px;border-bottom:1.5px solid currentColor;padding-bottom:2px}
 .link .ico{width:18px;height:18px}
 
-/* announcement 48 */
-.ann{background:var(--tint);font-size:13.5px}
-.ann .wrap{height:48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
-.ann .l{display:flex;gap:22px}.ann .r{text-align:right}
-.ann .c{font-weight:500}
-
-/* header 88 */
-.hdr .wrap{height:88px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+/* header 88 (announcement bar removed: Greg, 24 Nov) */
+.hdr .wrap{height:88px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:24px}
 .search{display:flex;align-items:center;width:min(430px,100%);height:48px;border:2px solid #E3E6EA;border-radius:100px;padding:0 6px 0 20px;font-size:15px;color:var(--slate)}
 .search .cat{display:flex;align-items:center;gap:2px;padding-right:12px;margin-right:12px;border-right:1px solid var(--line);color:var(--navy);font-weight:500;white-space:nowrap}
 .search .cat .ico{width:18px;height:18px}
-.search span.ph{flex:1;white-space:nowrap;overflow:hidden}
+.search span.ph{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:10px}
 .search .go{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center}
 .search .go .ico{width:18px;height:18px}
 .logo img{height:28px;width:auto}
@@ -99,6 +93,57 @@ section{margin-top:clamp(48px,5vw,80px)}
 .arrows button{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center}
 .arrows button:hover{box-shadow:inset 0 0 0 1px var(--navy)}
 
+/* statement (Hyper: Rich text), brought over from Sleek */
+.statement{text-align:center;max-width:1100px;margin-inline:auto;margin-top:clamp(72px,8vw,128px)}
+.statement h2{font-size:clamp(26px,3vw,46px);line-height:1.2;text-transform:uppercase;font-weight:600;letter-spacing:.06em}
+.statement h2 .serif{font-size:1.18em;letter-spacing:0;color:var(--foil)}
+.statement p{margin:22px auto 0;color:var(--slate);max-width:560px;font-size:16px}
+.statement .link{margin-top:26px}
+
+/* feature showcase (custom section on Hyper), brought over from Sleek */
+.feat{display:grid;grid-template-columns:1fr minmax(0,520px) 1fr;gap:clamp(24px,4vw,72px);align-items:center}
+.flist{display:grid;gap:18px}
+.flist button{text-align:left;display:flex;gap:16px;align-items:baseline;font-size:clamp(18px,1.6vw,26px);text-transform:uppercase;font-weight:600;letter-spacing:.1em;color:rgba(16,35,63,.28);transition:color .25s}
+.flist button small{font-size:14px;letter-spacing:.06em}
+.flist button:hover{color:rgba(16,35,63,.55)}
+.flist button.on{color:var(--navy)}
+.fimg{border-radius:10px;overflow:hidden;height:min(693px,84vh);aspect-ratio:3/4;max-width:100%;justify-self:center;background:var(--studio);position:relative}
+.fimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.fimg img.on{opacity:1}
+.fdet .d{display:none}
+.fdet .d.on{display:block}
+.fdet h3{font-size:15px;text-transform:uppercase;font-weight:600;letter-spacing:.14em;margin-top:6px}
+.fdet ul{margin-top:18px;display:grid;gap:8px;font-weight:500;color:var(--slate)}
+.fdet ul li{display:flex;gap:10px}
+.fdet ul .ico{width:20px;height:20px;color:var(--foil)}
+.fdet .pr{margin-top:22px;font-size:18px;font-weight:500}
+.fdet .b{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+/* shop by care stage (Hyper: Collection cards) */
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.stage{display:flex;flex-direction:column}
+.stage .im{aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--studio)}
+.stage .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.stage:hover .im img{transform:scale(1.04)}
+.stage h3{margin-top:20px;font-size:17px;text-transform:uppercase;font-weight:600;letter-spacing:.12em}
+.stage p{margin-top:8px;color:var(--slate);max-width:380px}
+.stage .link{margin-top:16px;align-self:flex-start}
+
+/* dentist recommended + clinical references (Hyper: Image with text + list) */
+.proof{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,6vw,110px);align-items:center;padding-block:clamp(40px,5vw,72px);border-block:1px solid var(--line)}
+.proof .mark{width:112px;height:112px}
+.proof h2{margin-top:26px}
+.proof .lead p{margin-top:14px;color:var(--slate);max-width:440px}
+.proof .btn{margin-top:28px}
+.refs li+li{border-top:1px solid var(--line)}
+.refs a{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:20px;padding-block:20px}
+.refs i{width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--studio)}
+.refs i img{width:100%;height:100%;object-fit:cover;transform:scale(1.3)}
+.refs b{display:block;font-size:14px}
+.refs small{display:block;margin-top:2px;font-size:14.5px;color:var(--slate)}
+.refs .link{font-size:14.5px}
+.refs a:hover .link{color:var(--foil)}
+
 /* trust row */
 .trust{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
 .trust div{display:flex;align-items:center;gap:14px;padding:26px 24px;font-size:15px;font-weight:500;line-height:1.35}
@@ -159,14 +204,19 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
 @media (max-height:780px) and (min-width:901px){.slides{height:500px}.slide .img{height:460px}.slide h1{font-size:clamp(26px,2.2vw,34px);margin-top:10px}.slide p{margin-top:12px}.slide .btn{margin-top:20px}.hero{padding-top:14px}}
 @media (max-width:1180px){
   .track{grid-auto-columns:calc((100% - 3 * 16px) / 4)}
+  .feat{grid-template-columns:1fr 1fr}
+  .feat .flist{grid-column:1/-1;grid-auto-flow:column;justify-content:start;gap:28px}
+  .fimg{height:auto;width:100%;max-height:84vh}
   .hdr .acts .t{display:none}
   .ft{grid-template-columns:1fr 1fr 1fr;row-gap:40px}
   .ft .news{grid-column:1/-1}
   .ft .first{grid-column:1/-1}
 }
+@media (max-width:1100px) and (min-width:901px){
+  .nav .wrap{gap:14px;font-size:14px;padding-inline:16px}
+}
 @media (max-width:900px){
-  .ann .l,.ann .r{display:none}.ann .wrap{grid-template-columns:1fr;text-align:center;height:40px}
-  .hdr .wrap{height:64px;grid-template-columns:auto 1fr auto;gap:12px}
+  .hdr .wrap{height:64px;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px}
   .menu-btn{display:grid;place-items:center;width:40px;height:40px;margin-left:-8px}
   .hdr .logo{justify-self:center}.logo img{height:22px}
   .hdr .search-d{display:none}
@@ -198,6 +248,18 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   .brand-tile .lg img{max-height:44px}.brand-tile .lg img.cs{max-height:70px}
   .promo{grid-template-columns:1fr}
   .faq{grid-template-columns:1fr}
+  .feat{grid-template-columns:1fr;gap:24px}
+  .feat .flist{grid-auto-flow:row;gap:12px}
+  .fimg{aspect-ratio:4/5;max-height:none}
+  .stages{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:calc((100% - 12px) / 1.35);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad)}
+  .stages::-webkit-scrollbar{display:none}
+  .stage{scroll-snap-align:start}
+  .stage h3{margin-top:16px;font-size:16px}
+  .proof{grid-template-columns:1fr;gap:28px}
+  .proof .mark{width:88px;height:88px}
+  .refs a{grid-template-columns:52px minmax(0,1fr);gap:14px;padding-block:16px}
+  .refs i{width:52px;height:52px}
+  .refs .link{grid-column:2;justify-self:start}
   .ft{grid-template-columns:1fr 1fr;padding-block:48px 36px}
   .legal .wrap{flex-direction:column}
 }
@@ -213,19 +275,12 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
 </head>
 <body>
 
-<div class="ann"><div class="wrap">
-  <div class="l"><a href="#">For practices</a><a href="#">Track an order</a></div>
-  <div class="c">Practices: sign in to see wholesale prices</div>
-  <div class="r">Australia (AUD $)</div>
-</div></div>
-
 <header class="hdr">
   <div class="wrap">
     <button class="menu-btn" aria-label="Menu"><svg class="ico"><use href="#i-menu"/></svg></button>
     <div class="search search-d"><span class="cat">All <svg class="ico"><use href="#i-down"/></svg></span><span class="ph">Search toothpaste, rinses, floss</span><span class="go"><svg class="ico"><use href="#i-search"/></svg></span></div>
     <a class="logo" href="#"><img src="assets/logo/cuross-navy.svg" alt="Cuross Health"></a>
     <div class="acts">
-      <a class="practice" href="#"><svg class="ico"><use href="#i-pin"/></svg><span class="t">For practices</span></a>
       <a href="#"><svg class="ico"><use href="#i-user"/></svg><span class="t">Sign in</span></a>
       <a class="cart" href="#"><svg class="ico"><use href="#i-bag"/></svg><b>0</b></a>
     </div>
@@ -239,9 +294,10 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   <a href="#">Mouthwash and rinses</a>
   <a href="#">Gels</a>
   <a href="#">Floss</a>
+  <a href="#">Care stage <svg class="ico"><use href="#i-down"/></svg></a>
   <a href="#">Brands <svg class="ico"><use href="#i-down"/></svg></a>
   <a href="#">About</a>
-  <a class="pill" href="#">Practice sign in</a>
+  <a class="pill" href="#">For practices</a>
 </div></nav>
 
 <section class="hero">
@@ -304,9 +360,77 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
 <section class="wrap">
   <div class="trust">
     <div><svg class="ico"><use href="#i-tooth"/></svg>Made for implants and natural teeth</div>
-    <div><svg class="ico"><use href="#i-badge"/></svg>Brands dental professionals recommend</div>
+    <div><svg class="ico"><use href="#i-badge"/></svg>Recommended and trusted by dentists</div>
     <div><svg class="ico"><use href="#i-tag"/></svg>Wholesale prices for practices</div>
     <div><svg class="ico"><use href="#i-truck"/></svg>Shipping Australia-wide</div>
+  </div>
+</section>
+
+<section class="wrap statement">
+  <h2>Daily care made for <span class="serif">implants</span> and natural teeth</h2>
+  <p>Ovoss, Curasept and iDontix in one place, for patients at home and the practices that look after them.</p>
+  <a class="link" href="#">About Cuross Health <svg class="ico"><use href="#i-arrow"/></svg></a>
+</section>
+
+<section class="wrap">
+  <div class="feat">
+    <div class="flist">
+      <button class="on" data-f="0"><small>01</small>Toothpaste</button>
+      <button data-f="1"><small>02</small>Mouthwash</button>
+      <button data-f="2"><small>03</small>X-Floss</button>
+    </div>
+    <div class="fimg">
+      <img class="on" src="assets/img/ovoss-toothpaste-tall.jpg" alt="Ovoss Implant Care toothpaste">
+      <img src="assets/img/ovoss-mouthwash-tall.jpg" alt="Ovoss Implant Care mouthwash">
+      <img src="assets/img/idx-xfloss-tall.jpg" alt="iDontix X-Floss">
+    </div>
+    <div class="fdet">
+      <div class="d on"><div class="eyebrow">Ovoss Implant Care</div><h3>Toothpaste</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>For implants and natural teeth</li><li><svg class="ico"><use href="#i-check"/></svg>Low fluoride (200 ppm F)</li><li><svg class="ico"><use href="#i-check"/></svg>Low abrasive</li><li><svg class="ico"><use href="#i-check"/></svg>pH neutral</li></ul><div class="pr">$12.95 · 75 ml</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
+      <div class="d"><div class="eyebrow">Ovoss Implant Care</div><h3>Mouthwash</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>For implants and natural teeth</li><li><svg class="ico"><use href="#i-check"/></svg>Alcohol free</li><li><svg class="ico"><use href="#i-check"/></svg>pH neutral</li></ul><div class="pr">$14.95 · 500 ml</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
+      <div class="d"><div class="eyebrow">iDontix</div><h3>X-Floss</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>Firm threader and soft floss</li><li><svg class="ico"><use href="#i-check"/></svg>For braces, bridges, wide spaces and implants</li><li><svg class="ico"><use href="#i-check"/></svg>30 strands</li></ul><div class="pr">$12.50</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="coll-head">
+    <div><h2 class="h2">Shop by care stage</h2><p class="sub">What to use after treatment, and every day after that.</p></div>
+  </div>
+  <div class="stages">
+    <a class="stage" href="#">
+      <div class="im"><img src="assets/img/cs-ads220.jpg" alt="Curasept ADS 220 rinse"></div>
+      <h3>Post surgery</h3>
+      <p>Chlorhexidine rinses, gel and toothpaste for the weeks after implant placement, extractions and gum surgery.</p>
+      <span class="link">Shop 4 products <svg class="ico"><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="stage" href="#">
+      <div class="im"><img src="assets/img/idx-xribbon.jpg" alt="iDontix X-Ribbon"></div>
+      <h3>Post restorative</h3>
+      <p>Floss and toothpaste for cleaning around crowns, bridges and implant restorations.</p>
+      <span class="link">Shop 4 products <svg class="ico"><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="stage" href="#">
+      <div class="im"><img src="assets/img/ovoss-range-sq.jpg" alt="Ovoss Implant Care toothpaste and mouthwash"></div>
+      <h3>Ongoing care</h3>
+      <p>Everyday care that keeps implants and natural teeth healthy for the long run.</p>
+      <span class="link">Shop 5 products <svg class="ico"><use href="#i-arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="proof">
+    <div class="lead">
+      <img class="mark" src="assets/logo/dentist-mark.svg" alt="Dentist recommended">
+      <h2 class="h2">Recommended by dentists. Backed by research.</h2>
+      <p>We only stock products that are clinically researched and proven. Read the studies behind each one.</p>
+      <a class="btn" href="#">Clinical references</a>
+    </div>
+    <ul class="refs">
+      <li><a href="#"><i><img src="assets/img/ovoss-tube.jpg" alt=""></i><span><b class="pname">Ovoss Implant Care</b><small>Toothpaste and mouthwash</small></span><span class="link">References <svg class="ico"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a href="#"><i><img src="assets/img/cs-ads220.jpg" alt=""></i><span><b class="pname">Curasept ADS</b><small>Chlorhexidine rinses, gel and toothpaste</small></span><span class="link">References <svg class="ico"><use href="#i-arrow"/></svg></span></a></li>
+      <li><a href="#"><i><img src="assets/img/idx-xfloss.jpg" alt=""></i><span><b class="pname">iDontix</b><small>X-Floss, X-Floss Lite and X-Ribbon</small></span><span class="link">References <svg class="ico"><use href="#i-arrow"/></svg></span></a></li>
+    </ul>
   </div>
 </section>
 
@@ -336,18 +460,9 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
         <li><svg class="ico"><use href="#i-check"/></svg>Quick order list for regular reorders</li>
         <li><svg class="ico"><use href="#i-check"/></svg>Practice sizes and free iDontix sample cards</li>
       </ul>
-      <div class="btns"><a class="btn" href="#">Apply for an account</a><a class="btn ghost" href="#">Sign in</a></div>
+      <div class="btns"><a class="btn" href="#">Apply for an account</a></div>
     </div>
   </div>
-</section>
-
-<section class="wrap" data-coll data-fixed="essentials">
-  <div class="coll-head">
-    <div><h2 class="h2">Implant care essentials</h2><p class="sub">Daily care for implants, bridges and natural teeth.</p></div>
-    <a class="link" href="#">View all <svg class="ico"><use href="#i-arrow"/></svg></a>
-  </div>
-  <div class="track"></div>
-  <div class="track-foot"><div class="bar"><i></i></div><div class="arrows"><button data-dir="-1" aria-label="Previous"><svg class="ico"><use href="#i-left"/></svg></button><button data-dir="1" aria-label="Next"><svg class="ico"><use href="#i-right"/></svg></button></div></div>
 </section>
 
 <section class="wrap">
@@ -371,7 +486,7 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   <div class="wrap ft">
     <div class="first"><img src="assets/logo/cuross-navy.svg" alt="Cuross Health"><p class="about">Oral care for implants and natural teeth, for patients and dental practices.</p></div>
     <div><h4>Shop</h4><ul><li><a href="#">Toothpaste</a></li><li><a href="#">Mouthwash and rinses</a></li><li><a href="#">Gels</a></li><li><a href="#">Floss</a></li><li><a href="#">Shop all</a></li></ul></div>
-    <div><h4>Practices</h4><ul><li><a href="#">Apply for an account</a></li><li><a href="#">Quick order</a></li><li><a href="#">Patient samples</a></li><li><a href="#">Sign in</a></li></ul></div>
+    <div><h4>Practices</h4><ul><li><a href="#">Apply for an account</a></li><li><a href="#">Quick order</a></li><li><a href="#">Patient samples</a></li></ul></div>
     <div><h4>Help</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul></div>
     <div class="news"><h4>Stay in the loop</h4><p>Product news and practice offers, now and then.</p><form onsubmit="return false"><input type="email" placeholder="Email address" aria-label="Email address"><button>Sign up</button></form></div>
   </div>
@@ -386,9 +501,15 @@ const SETS = {
   all: ["ovoss-toothpaste","ovoss-mouthwash","cs-ads220","idx-xfloss","cs-ads350","idx-xfloss-lite","cs-ads712","idx-xribbon","cs-ads205","cs-ads705"],
   ovoss: ["ovoss-toothpaste","ovoss-mouthwash"],
   curasept: ["cs-ads205","cs-ads212","cs-ads220","cs-ads350","cs-ads705","cs-ads712","cs-ads5020"],
-  idontix: ["idx-xfloss","idx-xfloss-lite","idx-xribbon"],
-  essentials: ["ovoss-toothpaste","ovoss-mouthwash","idx-xfloss","idx-xfloss-lite","idx-xribbon","cs-ads705","cs-ads205"]
+  idontix: ["idx-xfloss","idx-xfloss-lite","idx-xribbon"]
 };
+// feature showcase
+document.querySelectorAll(".flist button").forEach(b => b.onclick = () => {
+  const n = +b.dataset.f;
+  document.querySelectorAll(".flist button").forEach((x, k) => x.classList.toggle("on", k === n));
+  document.querySelectorAll(".fimg img").forEach((x, k) => x.classList.toggle("on", k === n));
+  document.querySelectorAll(".fdet .d").forEach((x, k) => x.classList.toggle("on", k === n));
+});
 const card = id => { const p = PRODUCTS[id]; return `<a class="card" href="#">
   <div class="im"><img src="assets/img/${id}.jpg" alt="${p.brand} ${p.name}" loading="lazy"><span class="add" aria-label="Add to cart">${icon("plus")}</span></div>
   <div class="info"><span class="brand">${p.brand}</span><span class="name pname">${p.name}</span><span class="desc serif">${p.desc}${p.size ? ", " + p.size : ""}</span><span class="price${p.price == null ? " p" : ""}">${fmtPrice(p)}</span></div></a>`; };
