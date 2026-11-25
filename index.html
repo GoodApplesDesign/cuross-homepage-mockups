@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/base.css">
-<script>if (/[?&]hero=sleek\b/.test(location.search)) document.documentElement.classList.add("hero-c");</script>
 <style>
 /* Direction A: Hyper (Ceramide preset) layout, measured at 1732 px (see SPEC.md), in the Ovoss identity */
 :root{--pad:clamp(16px,7.8vw,135px);--card-bg:var(--studio)}
@@ -60,32 +59,6 @@ section{margin-top:clamp(48px,5vw,80px)}
 .dots button{width:28px;height:3px;background:var(--line);border-radius:2px}
 .dots button.on{background:var(--navy)}
 
-.hero-c .hero{display:none}
-
-/* option 02 hero (?hero=sleek): Sleek's Slideshow with Layout "Centered" (active slide, neighbours peeking).
-   Not native to Hyper: a custom section. Built exactly as sleek.html (radius 12, white label pill, round arrows and
-   dots below the slide); the centre slide lines up with this page's content width. */
-.heroC{display:none;margin-top:20px;position:relative;overflow:hidden}
-.hero-c .heroC{display:block}
-.hc-track{display:flex;gap:10px;will-change:transform}
-.hc-track.anim{transition:transform .7s cubic-bezier(.65,0,.35,1)}
-.hc{flex:none;width:calc(min(100vw,1732px) - 2 * var(--pad));height:max(440px,min(696px,calc((min(100vw,1732px) - 2 * var(--pad)) * .467),calc(100vh - 170px)));border-radius:12px;overflow:hidden;position:relative;background:var(--studio)}
-.hc > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hc .tiles{position:absolute;right:3%;top:0;bottom:0;width:52%;display:flex;align-items:center;justify-content:center}
-.hc .tiles img{width:100%;height:84%;object-fit:contain}
-.hc .txt{position:absolute;left:clamp(24px,6%,90px);top:50%;transform:translateY(-50%);max-width:min(500px,38%)}
-.hc .tag{display:inline-block;background:#fff;border-radius:100px;padding:6px 14px;font-size:13px;font-weight:600}
-.hc h1,.hc h2{margin-top:20px;font-size:clamp(26px,2.7vw,46px);line-height:1.12;text-transform:uppercase;font-weight:600;letter-spacing:.07em}
-.hc p{margin-top:16px;color:var(--slate);font-size:16px;max-width:420px}
-.hc .btn{margin-top:28px}
-.hc.mist{background:var(--tint)}
-.hc.mist .tiles img{mix-blend-mode:multiply}
-.hc-nav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:20px}
-.hc-dots{display:flex;gap:8px}
-.hc-dots button{width:8px;height:8px;border-radius:50%;background:var(--line);transition:width .3s,background .3s}
-.hc-dots button.on{width:26px;border-radius:4px;background:var(--navy)}
-.hc-nav .round{width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px var(--line);display:grid;place-items:center;flex:none}
-.hc-nav .round:hover{box-shadow:inset 0 0 0 1px var(--navy)}
 
 /* category chips */
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
@@ -178,15 +151,30 @@ section{margin-top:clamp(48px,5vw,80px)}
 .trust div+div{border-left:1px solid var(--line)}
 .trust .ico{width:30px;height:30px;stroke-width:1.3;color:var(--foil)}
 
-/* brands */
-.brands{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.brand-tile{border-radius:10px;height:230px;display:flex;flex-direction:column;justify-content:space-between;padding:26px 28px;background:var(--mist);transition:background .25s}
-.brand-tile:hover{background:var(--tint)}
-.brand-tile .lg{flex:1;display:grid;place-items:center}
-.brand-tile .lg img{max-height:58px;max-width:62%;width:auto}
-.brand-tile .lg img.cs{max-height:92px}
-.brand-tile .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.brand-tile .meta>span:first-child{font-family:var(--serif);font-style:italic;color:var(--slate);font-size:15px}
+/* why it works: one block per brand (Greg 25 Nov, Colgate-style; Hyper: Image with text) */
+.why{display:grid;gap:16px}
+.wb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;border-radius:10px;overflow:hidden;background:var(--studio);min-height:clamp(420px,34vw,560px)}
+.wb.tint{background:var(--tint)}
+.wb.flip .wtxt{order:2}
+.wtxt{padding:clamp(28px,5vw,88px)}
+.wtxt .lg{display:block;width:auto}
+.wtxt .lg-ovoss{height:58px}.wtxt .lg-cs{height:64px}.wtxt .lg-idx{height:30px}
+.wtxt h2{margin-top:24px;font-size:clamp(24px,2.5vw,40px);line-height:1.14;text-transform:uppercase;font-weight:600;letter-spacing:.07em}
+.wtxt p{margin-top:18px;color:var(--slate);font-size:16px;max-width:470px}
+.wtxt .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.wimg{align-self:stretch;display:flex;align-items:center;justify-content:center;padding:clamp(12px,2vw,32px)}
+.wimg img{width:100%;height:auto;max-height:100%;object-fit:contain}
+.wimg img.mul{mix-blend-mode:multiply}
+
+/* care tips (Hyper: Featured blogs, measured on hyper-ceramide 25 Nov: 3 cards, gap 30, media 467x274 radius 10,
+   title 22/32, meta 13.5 slate under the image; phone swipes, cards 255 wide, gap 12) */
+.arts{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.art{display:block}
+.art .im{aspect-ratio:467/274;border-radius:10px;overflow:hidden;background:var(--studio)}
+.art .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.art:hover .im img{transform:scale(1.04)}
+.art .meta{margin-top:16px;font-size:13.5px;color:var(--slate)}
+.art h3{margin-top:6px;font-size:20px;line-height:1.45;font-weight:500}
 
 /* promo split */
 .promo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -260,16 +248,6 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   .slide .txt{padding:24px var(--pad) 56px;max-width:none}
   .slide h1{font-size:26px}
   .dots{bottom:24px}
-  .heroC{margin-top:4px}
-  .hc-track{gap:8px}
-  .hc{height:auto;aspect-ratio:3/4}
-  .hc > img{object-position:center bottom}
-  .hc .txt{left:22px;right:22px;top:26px;transform:none;max-width:none}
-  .hc h1,.hc h2{font-size:22px;margin-top:14px}
-  .hc p{display:none}
-  .hc .btn{margin-top:16px;height:44px}
-  .hc .tiles{left:0;right:0;width:auto;top:auto;bottom:3%;height:44%}
-  .hc .tiles img{height:100%}
   .chips{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad)}
   .chips::-webkit-scrollbar{display:none}
   .coll-head{flex-direction:column;align-items:flex-start;gap:16px}
@@ -281,10 +259,17 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   .trust div{padding:20px 14px;gap:10px;font-size:14px}
   .trust div:nth-child(3){border-left:0}
   .trust div:nth-child(n+3){border-top:1px solid var(--line)}
-  .brands{grid-template-columns:1fr;gap:12px}
-  .brand-tile{height:150px;padding:18px 22px}
-  .brand-tile .lg img{max-height:44px}.brand-tile .lg img.cs{max-height:70px}
   .promo{grid-template-columns:1fr}
+  .wb{grid-template-columns:1fr;min-height:0}
+  .wb.flip .wtxt{order:0}
+  .wimg{order:-1;padding:16px 16px 0}
+  .wtxt{padding:24px 22px 30px}
+  .wtxt .lg-ovoss{height:46px}.wtxt .lg-cs{height:52px}.wtxt .lg-idx{height:24px}
+  .wtxt h2{margin-top:18px;font-size:22px}
+  .arts{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:calc((100% - 12px) / 1.35);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad);scroll-padding-inline:var(--pad)}
+  .arts::-webkit-scrollbar{display:none}
+  .art{scroll-snap-align:start}
+  .art h3{font-size:16px;line-height:1.6}
   .faq{grid-template-columns:1fr}
   .feat{grid-template-columns:1fr;gap:24px}
   .feat .flist{grid-auto-flow:row;gap:12px}
@@ -332,8 +317,8 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   <a href="#">Mouthwash and rinses</a>
   <a href="#">Gels</a>
   <a href="#">Floss</a>
-  <a href="#">Care stage <svg class="ico"><use href="#i-down"/></svg></a>
   <a href="#">Brands <svg class="ico"><use href="#i-down"/></svg></a>
+  <a href="#">Care tips</a>
   <a href="#">About</a>
   <a class="pill" href="#">For practices</a>
 </div></nav>
@@ -344,8 +329,8 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
       <div class="slide on">
         <div class="txt">
           <div class="eyebrow">Ovoss Implant Care</div>
-          <h1>Protects implants. Supports natural teeth.</h1>
-          <p>Toothpaste and mouthwash with active oxygen. Low abrasive, pH neutral and made for daily care around implants.</p>
+          <h1>Active oxygen care for your implants</h1>
+          <p>Toothpaste and mouthwash that release active oxygen as you brush and rinse, breaking down plaque around implants and natural teeth.</p>
           <a class="btn" href="#">Shop Ovoss</a>
         </div>
         <div class="img"><img src="assets/img/ovoss-range-hyper.jpg" alt="Ovoss Implant Care toothpaste and mouthwash"></div>
@@ -353,8 +338,8 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
       <div class="slide">
         <div class="txt">
           <div class="eyebrow">Curasept ADS</div>
-          <h1>Chlorhexidine rinses, gels and toothpaste</h1>
-          <p>The Curasept ADS range with the Anti Discoloration System, from 0.05% to 0.20% chlorhexidine.</p>
+          <h1>Fights plaque without staining your teeth</h1>
+          <p>Chlorhexidine rinses and gels with a built-in anti-staining system, for healing after dental surgery and everyday gum care.</p>
           <a class="btn" href="#">Shop Curasept</a>
         </div>
         <div class="img row"><img src="assets/img/cs-ads205.jpg" alt=""><img src="assets/img/cs-ads212.jpg" alt=""><img src="assets/img/cs-ads220.jpg" alt=""></div>
@@ -362,8 +347,8 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
       <div class="slide">
         <div class="txt">
           <div class="eyebrow">iDontix</div>
-          <h1>Floss for implants, bridges and braces</h1>
-          <p>X-Floss, X-Floss Lite and X-Ribbon clean the spaces ordinary floss can't reach. Recommended by dental professionals.</p>
+          <h1>Thicker floss for implants and bridges</h1>
+          <p>X-Floss fills the wider gaps around implants, bridges and braces that ordinary floss slips straight through.</p>
           <a class="btn" href="#">Shop iDontix</a>
         </div>
         <div class="img row"><img src="assets/img/idx-xfloss.jpg" alt=""><img src="assets/img/idx-xfloss-lite.jpg" alt=""><img src="assets/img/idx-xribbon.jpg" alt=""></div>
@@ -372,25 +357,6 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
     <div class="dots" id="dots"><button class="on" aria-label="Slide 1"></button><button aria-label="Slide 2"></button><button aria-label="Slide 3"></button></div>
   </div>
 </section>
-
-<section class="heroC" id="heroC">
-  <div class="hc-track" id="hcTrack"></div>
-  <div class="hc-nav"><button class="round" data-d="-1" aria-label="Previous slide"><svg class="ico"><use href="#i-left"/></svg></button><div class="hc-dots" id="hcDots"></div><button class="round" data-d="1" aria-label="Next slide"><svg class="ico"><use href="#i-right"/></svg></button></div>
-</section>
-<template id="hcSlides">
-  <div class="hc" data-mimg="assets/img/ovoss-range-sleek-m.jpg">
-    <img src="assets/img/ovoss-range-sleek.jpg" alt="Ovoss Implant Care toothpaste and mouthwash">
-    <div class="txt"><span class="tag">Ovoss Implant Care</span><h1>Protects implants. Supports natural teeth.</h1><p>Toothpaste and mouthwash with active oxygen. Low abrasive, pH neutral and made for daily care around implants.</p><a class="btn" href="#">Shop Ovoss</a></div>
-  </div>
-  <div class="hc">
-    <div class="tiles"><img src="assets/img/hero-curasept.jpg" alt="Curasept ADS 205, 212 and 220 rinses"></div>
-    <div class="txt"><span class="tag">Curasept ADS</span><h2>Chlorhexidine rinses, gels and toothpaste</h2><p>The Curasept ADS range with the Anti Discoloration System, from 0.05% to 0.20% chlorhexidine.</p><a class="btn" href="#">Shop Curasept</a></div>
-  </div>
-  <div class="hc mist">
-    <div class="tiles"><img src="assets/img/hero-idontix-w.jpg" alt="iDontix X-Floss, X-Floss Lite and X-Ribbon"></div>
-    <div class="txt"><span class="tag">iDontix</span><h2>Floss for implants, bridges and braces</h2><p>X-Floss, X-Floss Lite and X-Ribbon clean the spaces ordinary floss can't reach.</p><a class="btn" href="#">Shop iDontix</a></div>
-  </div>
-</template>
 
 <section class="wrap">
   <div class="chips">
@@ -418,14 +384,14 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   <div class="trust">
     <div><svg class="ico"><use href="#i-tooth"/></svg>Made for implants and natural teeth</div>
     <div><svg class="ico"><use href="#i-badge"/></svg>Recommended and trusted by dentists</div>
-    <div><svg class="ico"><use href="#i-tag"/></svg>Wholesale prices for practices</div>
+    <div><svg class="ico"><use href="#i-check"/></svg>Backed by clinical research</div>
     <div><svg class="ico"><use href="#i-truck"/></svg>Shipping Australia-wide</div>
   </div>
 </section>
 
 <section class="wrap statement">
   <h2>Daily care made for <span class="serif">implants</span> and natural teeth</h2>
-  <p>Ovoss, Curasept and iDontix in one place, for patients at home and the practices that look after them.</p>
+  <p>The products dentists recommend for looking after implants, crowns and natural teeth, delivered to your door.</p>
   <a class="link" href="#">About Cuross Health <svg class="ico"><use href="#i-arrow"/></svg></a>
 </section>
 
@@ -442,36 +408,68 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
       <img src="assets/img/idx-xfloss-tall.jpg" alt="iDontix X-Floss">
     </div>
     <div class="fdet">
-      <div class="d on"><div class="eyebrow">Ovoss Implant Care</div><h3>Toothpaste</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>For implants and natural teeth</li><li><svg class="ico"><use href="#i-check"/></svg>Low fluoride (200 ppm F)</li><li><svg class="ico"><use href="#i-check"/></svg>Low abrasive</li><li><svg class="ico"><use href="#i-check"/></svg>pH neutral</li></ul><div class="pr">$12.95 · 75 ml</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
-      <div class="d"><div class="eyebrow">Ovoss Implant Care</div><h3>Mouthwash</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>For implants and natural teeth</li><li><svg class="ico"><use href="#i-check"/></svg>Alcohol free</li><li><svg class="ico"><use href="#i-check"/></svg>pH neutral</li></ul><div class="pr">$14.95 · 500 ml</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
-      <div class="d"><div class="eyebrow">iDontix</div><h3>X-Floss</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>Firm threader and soft floss</li><li><svg class="ico"><use href="#i-check"/></svg>For braces, bridges, wide spaces and implants</li><li><svg class="ico"><use href="#i-check"/></svg>30 strands</li></ul><div class="pr">$12.50</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
+      <div class="d on"><div class="eyebrow">Ovoss Implant Care</div><h3>Toothpaste</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>Releases active oxygen as you brush</li><li><svg class="ico"><use href="#i-check"/></svg>Gentle on implants and natural teeth</li><li><svg class="ico"><use href="#i-check"/></svg>Low abrasive and pH neutral</li><li><svg class="ico"><use href="#i-check"/></svg>Low fluoride (200 ppm F)</li></ul><div class="pr">$12.95 · 75 ml</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
+      <div class="d"><div class="eyebrow">Ovoss Implant Care</div><h3>Mouthwash</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>Releases active oxygen as you rinse</li><li><svg class="ico"><use href="#i-check"/></svg>Alcohol free, so it won't sting</li><li><svg class="ico"><use href="#i-check"/></svg>pH neutral</li></ul><div class="pr">$14.95 · 500 ml</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
+      <div class="d"><div class="eyebrow">iDontix</div><h3>X-Floss</h3><ul><li><svg class="ico"><use href="#i-check"/></svg>Thick, spongy floss fills wider gaps</li><li><svg class="ico"><use href="#i-check"/></svg>Firm threader slides under bridges</li><li><svg class="ico"><use href="#i-check"/></svg>30 strands</li></ul><div class="pr">$12.50</div><div class="b"><a class="btn" href="#">Add to cart</a><a class="btn ghost" href="#">View product</a></div></div>
     </div>
   </div>
 </section>
 
 <section class="wrap">
   <div class="coll-head">
-    <div><h2 class="h2">Shop by care stage</h2><p class="sub">What to use after treatment, and every day after that.</p></div>
+    <div><h2 class="h2">Care for every stage</h2><p class="sub">What to use while you heal, once your new teeth are fitted, and every day after that.</p></div>
   </div>
   <div class="stages">
     <a class="stage" href="#">
       <div class="im"><img src="assets/img/cs-ads220.jpg" alt="Curasept ADS 220 rinse"></div>
-      <h3>Post surgery</h3>
-      <p>Chlorhexidine rinses, gel and toothpaste for the weeks after implant placement, extractions and gum surgery.</p>
+      <h3>After surgery care</h3>
+      <p>Gentle rinses and gels to keep your mouth clean while it heals after implant surgery or an extraction.</p>
       <span class="link">Shop 4 products <svg class="ico"><use href="#i-arrow"/></svg></span>
     </a>
     <a class="stage" href="#">
       <div class="im"><img src="assets/img/idx-xribbon.jpg" alt="iDontix X-Ribbon"></div>
-      <h3>Post restorative</h3>
-      <p>Floss and toothpaste for cleaning around crowns, bridges and implant restorations.</p>
+      <h3>After final care</h3>
+      <p>Once your crown, bridge or implant is fitted, floss and toothpaste made to clean around it.</p>
       <span class="link">Shop 4 products <svg class="ico"><use href="#i-arrow"/></svg></span>
     </a>
     <a class="stage" href="#">
       <div class="im"><img src="assets/img/ovoss-range-sq.jpg" alt="Ovoss Implant Care toothpaste and mouthwash"></div>
       <h3>Ongoing care</h3>
-      <p>Everyday care that keeps implants and natural teeth healthy for the long run.</p>
+      <p>Everyday care that keeps implants and natural teeth healthy for years.</p>
       <span class="link">Shop 5 products <svg class="ico"><use href="#i-arrow"/></svg></span>
     </a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="why">
+    <div class="wb">
+      <div class="wtxt">
+        <img class="lg lg-ovoss" src="assets/logo/implant-care-navy.svg" alt="Ovoss Implant Care">
+        <h2>Active oxygen that clears plaque from implants</h2>
+        <p>When Ovoss meets saliva it releases active oxygen in a controlled way. It breaks down the plaque film that builds up on implants and gums, and stays gentle on titanium, so it's made for every day.</p>
+        <div class="btns"><a class="btn" href="#">Shop Ovoss</a><a class="btn ghost" href="#">Learn more</a></div>
+      </div>
+      <div class="wimg"><img src="assets/img/ovoss-range-why.jpg" alt="Ovoss Implant Care toothpaste and mouthwash"></div>
+    </div>
+    <div class="wb tint flip">
+      <div class="wtxt">
+        <img class="lg lg-cs" src="assets/logo/curasept.png" alt="Curasept">
+        <h2>The gold-standard antiseptic, without the stains</h2>
+        <p>Chlorhexidine is what dentists use to fight plaque and gum inflammation, but it can stain teeth. Curasept's patented Anti Discoloration System cuts that staining without weakening it, and no other chlorhexidine range has it.</p>
+        <div class="btns"><a class="btn" href="#">Shop Curasept</a><a class="btn ghost" href="#">Learn more</a></div>
+      </div>
+      <div class="wimg"><img class="mul" src="assets/img/hero-curasept-w.jpg" alt="Curasept ADS 205, 212 and 220 rinses"></div>
+    </div>
+    <div class="wb">
+      <div class="wtxt">
+        <img class="lg lg-idx" src="assets/logo/idontix.svg" alt="iDontix">
+        <h2>Thicker floss, made for implants and bridges</h2>
+        <p>Ordinary floss slips straight through the wider gaps around implants, bridges and braces. X-Floss is thick and spongy with a firm threader, so it fills those spaces and cleans them properly.</p>
+        <div class="btns"><a class="btn" href="#">Shop iDontix</a><a class="btn ghost" href="#">Learn more</a></div>
+      </div>
+      <div class="wimg"><img class="mul" src="assets/img/hero-idontix-w.jpg" alt="iDontix X-Floss, X-Floss Lite and X-Ribbon"></div>
+    </div>
   </div>
 </section>
 
@@ -492,11 +490,14 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
 </section>
 
 <section class="wrap">
-  <h2 class="h2">Shop by brand</h2>
-  <div class="brands">
-    <a class="brand-tile" href="#"><div class="lg"><img src="assets/logo/implant-care-navy.svg" alt="Ovoss Implant Care" style="max-height:74px"></div><div class="meta"><span>Science for oral longevity</span><span class="link">Shop <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
-    <a class="brand-tile" href="#"><div class="lg"><img class="cs" src="assets/logo/curasept.png" alt="Curasept"></div><div class="meta"><span>Chlorhexidine care</span><span class="link">Shop <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
-    <a class="brand-tile" href="#"><div class="lg"><img src="assets/logo/idontix.svg" alt="iDontix"></div><div class="meta"><span>Specialty dental floss</span><span class="link">Shop <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+  <div class="coll-head">
+    <div><h2 class="h2">Care tips</h2><p class="sub">Simple advice for looking after implants, crowns and natural teeth.</p></div>
+    <a class="link" href="#">All articles <svg class="ico"><use href="#i-arrow"/></svg></a>
+  </div>
+  <div class="arts">
+    <a class="art" href="#"><div class="im"><img src="assets/img/art-after-surgery.jpg" alt="Curasept ADS 350 gel"></div><p class="meta">After surgery care · 4 min read</p><h3>Looking after your mouth in the first weeks after implant surgery</h3></a>
+    <a class="art" href="#"><div class="im"><img src="assets/img/art-floss.jpg" alt="iDontix X-Floss Lite"></div><p class="meta">After final care · 3 min read</p><h3>How to floss around implants, crowns and bridges</h3></a>
+    <a class="art" href="#"><div class="im"><img src="assets/img/art-active-oxygen.jpg" alt="Ovoss Implant Care mouthwash"></div><p class="meta">Ongoing care · 3 min read</p><h3>What active oxygen does for your implants</h3></a>
   </div>
 </section>
 
@@ -526,14 +527,14 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   <div class="faq">
     <div class="side">
       <h2 class="h2">Questions</h2>
-      <p>Can't see your answer? Our team can help with orders, practice accounts and product advice.</p>
+      <p>Can't see your answer? Our team can help with products, orders and practice accounts.</p>
       <a class="link" href="#">Contact us <svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
     <div>
-      <details open><summary>How does my practice open a wholesale account?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Apply with your practice details. Once the account is approved, trade prices show whenever you're signed in.</p></details>
-      <details><summary>Which products are made for dental implants?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Ovoss Implant Care toothpaste and mouthwash are made for implants and natural teeth. iDontix X-Floss and X-Ribbon clean around implants, bridges and wide spaces.</p></details>
-      <details><summary>Can patients buy what their dentist recommends?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Yes. Everything except practice-only lines can be bought by anyone, with delivery Australia-wide.</p></details>
+      <details open><summary>Which products are made for dental implants?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Ovoss Implant Care toothpaste and mouthwash are made for implants and natural teeth. iDontix X-Floss and X-Ribbon clean around implants, bridges and wider gaps.</p></details>
+      <details><summary>What should I use after implant surgery?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Always follow your dentist's advice. Our After surgery care range has the rinses and gels dentists often recommend while you heal.</p></details>
       <details><summary>How long does delivery take?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Delivery times and costs for your postcode are shown at checkout.</p></details>
+      <details><summary>How does my practice open a wholesale account?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Apply with your practice details. Once the account is approved, trade prices show whenever you're signed in.</p></details>
       <details><summary>Who is Cuross Health?<svg class="ico"><use href="#i-plus"/></svg></summary><p>Cuross Health is the company behind Ovoss, and it also stocks Curasept and iDontix.</p></details>
     </div>
   </div>
@@ -544,7 +545,7 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
     <div class="first"><img src="assets/logo/cuross-navy.svg" alt="Cuross Health"><p class="about">Oral care for implants and natural teeth, for patients and dental practices.</p></div>
     <div><h4>Shop</h4><ul><li><a href="#">Toothpaste</a></li><li><a href="#">Mouthwash and rinses</a></li><li><a href="#">Gels</a></li><li><a href="#">Floss</a></li><li><a href="#">Shop all</a></li></ul></div>
     <div><h4>Practices</h4><ul><li><a href="#">Apply for an account</a></li><li><a href="#">Quick order</a></li><li><a href="#">Patient samples</a></li></ul></div>
-    <div><h4>Help</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Care tips</a></li><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li></ul></div>
     <div class="news"><h4>Stay in the loop</h4><p>Product news and practice offers, now and then.</p><form onsubmit="return false"><input type="email" placeholder="Email address" aria-label="Email address"><button>Sign up</button></form></div>
   </div>
   <div class="legal"><div class="wrap"><span>© 2026 Cuross Health Pty Ltd</span><div><a href="#">Privacy</a><a href="#">Terms</a></div></div></div>
@@ -552,7 +553,6 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
 
 <script src="assets/js/icons.js"></script>
 <script src="assets/js/products.js"></script>
-<script src="assets/js/switcher.js"></script>
 <script>
 const SETS = {
   all: ["ovoss-toothpaste","ovoss-mouthwash","cs-ads220","idx-xfloss","cs-ads350","idx-xfloss-lite","cs-ads712","idx-xribbon","cs-ads205","cs-ads705"],
@@ -581,40 +581,12 @@ document.querySelectorAll("[data-coll]").forEach(sec => {
 });
 // hero slider: fade, 6 s, pauses on hover
 (() => {
-  if (document.documentElement.classList.contains("hero-c")) return;
   const slides = [...document.querySelectorAll(".slide")], dots = [...document.querySelectorAll("#dots button")];
   let i = 0, t; const go = n => { i = (n + slides.length) % slides.length; slides.forEach((s, k) => s.classList.toggle("on", k === i)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
   const start = () => { clearInterval(t); t = setInterval(() => go(i + 1), 6000); };
   dots.forEach((d, k) => d.onclick = () => { go(k); start(); });
   const box = document.getElementById("slides"); box.onmouseenter = () => clearInterval(t); box.onmouseleave = start;
   if (!new URLSearchParams(location.search).has("still")) start();
-})();
-// option 02 hero: Sleek carousel, centred slide with neighbours peeking, looping (same script as sleek.html)
-(() => {
-  if (!document.documentElement.classList.contains("hero-c")) return;
-  const sec = document.getElementById("heroC"), track = document.getElementById("hcTrack"), dots = document.getElementById("hcDots");
-  const src = [...document.getElementById("hcSlides").content.children];
-  const mobile = matchMedia("(max-width:900px)");
-  const make = el => { const c = el.cloneNode(true); const m = c.dataset.mimg; if (m && mobile.matches) c.querySelector(":scope > img").src = m; return c; };
-  const n = src.length;
-  const build = () => { track.innerHTML = ""; [src[n - 1], ...src, src[0]].forEach(s => track.appendChild(make(s))); };
-  build();
-  dots.innerHTML = src.map((_, k) => `<button aria-label="Slide ${k + 1}"></button>`).join("");
-  let i = 1, t;
-  const pos = (anim) => {
-    const w = track.children[1].getBoundingClientRect().width, gap = parseFloat(getComputedStyle(track).gap) || 0;
-    const left = (sec.clientWidth - w) / 2 - i * (w + gap);
-    track.classList.toggle("anim", anim); track.style.transform = `translateX(${left}px)`;
-    [...dots.children].forEach((d, k) => d.classList.toggle("on", k === (i - 1 + n) % n));
-  };
-  const go = d => { i += d; pos(true); };
-  track.addEventListener("transitionend", () => { if (i === 0) { i = n; pos(false); } if (i === n + 1) { i = 1; pos(false); } });
-  const restart = () => { clearInterval(t); if (!new URLSearchParams(location.search).has("still")) t = setInterval(() => go(1), 6000); };
-  [...dots.children].forEach((d, k) => d.onclick = () => { i = k + 1; pos(true); restart(); });
-  sec.querySelectorAll(".hc-nav [data-d]").forEach(b => b.onclick = () => { go(+b.dataset.d); restart(); });
-  addEventListener("resize", () => pos(false));
-  mobile.addEventListener("change", () => { build(); pos(false); });
-  pos(false); restart();
 })();
 </script>
 </body>
