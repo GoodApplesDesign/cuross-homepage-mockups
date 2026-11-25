@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cuross Health · Direction A (Hyper)</title>
+<title>Cuross Health · Homepage on Hyper</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/base.css">
+<script>if (/[?&]hero=b\b/.test(location.search)) document.documentElement.classList.add("hero-b");</script>
 <style>
 /* Direction A: Hyper (Ceramide preset) layout, measured at 1732 px (see SPEC.md), in the Ovoss identity */
 :root{--pad:clamp(16px,7.8vw,135px);--card-bg:var(--studio)}
@@ -58,6 +59,32 @@ section{margin-top:clamp(48px,5vw,80px)}
 .dots{position:absolute;left:var(--pad);bottom:20px;display:flex;gap:8px}
 .dots button{width:28px;height:3px;background:var(--line);border-radius:2px}
 .dots button.on{background:var(--navy)}
+
+/* option B hero (?hero=b): Hyper's own Slideshow section, measured on hyper-theme-demo 25 Nov:
+   fixed width (page padding), height adapts to the first image, 10 px radius (8 on phone), content position per
+   slide, arrows + dots centred at the bottom inside the slide. Same artwork as the Sleek hero. */
+.heroB{display:none;margin-top:20px}
+.hero-b .hero{display:none}
+.hero-b .heroB{display:block}
+.ss{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:2400/1121;min-height:440px;max-height:max(440px,calc(100vh - 170px));width:100%;background:var(--studio)}
+.ss-track{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.ss-slide{flex:none;width:100%;height:100%;position:relative;background:var(--studio)}
+/* artwork stops 52 px above the slide bottom so the controls never sit on a product (export slides this way) */
+.ss-slide > img{position:absolute;top:0;left:0;width:100%;height:calc(100% - 52px);object-fit:contain;object-position:100% 50%}
+.ss-slide.mist{background:var(--tint)}
+.ss-slide .tiles{position:absolute;right:3%;top:0;bottom:52px;width:52%;display:flex;align-items:center;justify-content:center}
+.ss-slide .tiles img{width:100%;height:84%;object-fit:contain}
+.ss-slide.mist .tiles img{mix-blend-mode:multiply}
+.ss-slide .txt{position:absolute;left:clamp(24px,6%,90px);top:calc(50% - 26px);transform:translateY(-50%);max-width:min(500px,38%)}
+.ss-slide h1,.ss-slide h2{margin-top:14px;font-size:clamp(26px,2.7vw,46px);line-height:1.12;text-transform:uppercase;font-weight:600;letter-spacing:.07em}
+.ss-slide p{margin-top:16px;color:var(--slate);font-size:16px;max-width:420px}
+.ss-slide .btn{margin-top:28px}
+.ss-ctrl{position:absolute;left:0;right:0;bottom:24px;display:flex;justify-content:center;align-items:center;gap:16px;z-index:2}
+.ss-ctrl .arr{width:28px;height:28px;display:grid;place-items:center;color:var(--navy)}
+.ss-ctrl .arr .ico{width:22px;height:22px}
+.ss-dots{display:flex;gap:8px;align-items:center}
+.ss-dots button{width:8px;height:8px;border-radius:4px;background:rgba(16,35,63,.25);transition:width .3s,background .3s}
+.ss-dots button.on{width:26px;background:var(--navy)}
 
 /* category chips */
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
@@ -232,6 +259,16 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
   .slide .txt{padding:24px var(--pad) 56px;max-width:none}
   .slide h1{font-size:26px}
   .dots{bottom:24px}
+  .heroB{margin-top:4px}
+  .ss{aspect-ratio:.7;min-height:0;max-height:none;border-radius:8px}
+  .ss-slide > img{height:100%;object-fit:cover;object-position:center bottom}
+  .ss-slide .txt{left:22px;right:22px;top:26px;transform:none;max-width:none}
+  .ss-slide h1,.ss-slide h2{font-size:22px;margin-top:10px}
+  .ss-slide p{display:none}
+  .ss-slide .btn{margin-top:16px;height:44px}
+  .ss-slide .tiles{left:0;right:0;width:auto;top:auto;bottom:13%;height:40%}
+  .ss-slide .tiles img{height:100%}
+  .ss-ctrl{bottom:14px}
   .chips{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad)}
   .chips::-webkit-scrollbar{display:none}
   .coll-head{flex-direction:column;align-items:flex-start;gap:16px}
@@ -332,6 +369,28 @@ footer{margin-top:clamp(64px,7vw,110px);background:var(--mist);border-top:1px so
       </div>
     </div>
     <div class="dots" id="dots"><button class="on" aria-label="Slide 1"></button><button aria-label="Slide 2"></button><button aria-label="Slide 3"></button></div>
+  </div>
+</section>
+
+<section class="heroB">
+  <div class="wrap">
+    <div class="ss" id="ss">
+      <div class="ss-track" id="ssTrack">
+        <div class="ss-slide" data-mimg="assets/img/ovoss-range-hyper-m.jpg">
+          <img src="assets/img/ovoss-range-sleek.jpg" alt="Ovoss Implant Care toothpaste and mouthwash">
+          <div class="txt"><div class="eyebrow">Ovoss Implant Care</div><h1>Protects implants. Supports natural teeth.</h1><p>Toothpaste and mouthwash with active oxygen. Low abrasive, pH neutral and made for daily care around implants.</p><a class="btn" href="#">Shop Ovoss</a></div>
+        </div>
+        <div class="ss-slide">
+          <div class="tiles"><img src="assets/img/hero-curasept.jpg" alt="Curasept ADS 205, 212 and 220 rinses"></div>
+          <div class="txt"><div class="eyebrow">Curasept ADS</div><h2>Chlorhexidine rinses, gels and toothpaste</h2><p>The Curasept ADS range with the Anti Discoloration System, from 0.05% to 0.20% chlorhexidine.</p><a class="btn" href="#">Shop Curasept</a></div>
+        </div>
+        <div class="ss-slide mist">
+          <div class="tiles"><img src="assets/img/hero-idontix-w.jpg" alt="iDontix X-Floss, X-Floss Lite and X-Ribbon"></div>
+          <div class="txt"><div class="eyebrow">iDontix</div><h2>Floss for implants, bridges and braces</h2><p>X-Floss, X-Floss Lite and X-Ribbon clean the spaces ordinary floss can't reach.</p><a class="btn" href="#">Shop iDontix</a></div>
+        </div>
+      </div>
+      <div class="ss-ctrl"><button class="arr" data-d="-1" aria-label="Previous slide"><svg class="ico"><use href="#i-left"/></svg></button><div class="ss-dots" id="ssDots"></div><button class="arr" data-d="1" aria-label="Next slide"><svg class="ico"><use href="#i-right"/></svg></button></div>
+    </div>
   </div>
 </section>
 
@@ -530,6 +589,22 @@ document.querySelectorAll("[data-coll]").forEach(sec => {
   dots.forEach((d, k) => d.onclick = () => { go(k); start(); });
   const box = document.getElementById("slides"); box.onmouseenter = () => clearInterval(t); box.onmouseleave = start;
   if (!new URLSearchParams(location.search).has("still")) start();
+})();
+// option B hero: Hyper Slideshow (slide transition, 6 s, pauses on hover)
+(() => {
+  if (!document.documentElement.classList.contains("hero-b")) return;
+  const box = document.getElementById("ss"), track = document.getElementById("ssTrack"), dots = document.getElementById("ssDots");
+  const slides = [...track.children], mobile = matchMedia("(max-width:900px)");
+  const imgs = () => slides.forEach(s => { const m = s.dataset.mimg, im = s.querySelector(":scope > img"); if (!m || !im) return; im.dataset.dimg ??= im.getAttribute("src"); im.src = mobile.matches ? m : im.dataset.dimg; });
+  imgs(); mobile.addEventListener("change", imgs);
+  dots.innerHTML = slides.map((_, k) => `<button aria-label="Slide ${k + 1}"></button>`).join("");
+  let i = 0, t;
+  const go = n => { i = (n + slides.length) % slides.length; track.style.transform = `translateX(${-100 * i}%)`; [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i)); };
+  const start = () => { clearInterval(t); if (!new URLSearchParams(location.search).has("still")) t = setInterval(() => go(i + 1), 6000); };
+  [...dots.children].forEach((d, k) => d.onclick = () => { go(k); start(); });
+  box.querySelectorAll(".arr").forEach(b => b.onclick = () => { go(i + +b.dataset.d); start(); });
+  box.onmouseenter = () => clearInterval(t); box.onmouseleave = start;
+  go(0); start();
 })();
 </script>
 </body>
